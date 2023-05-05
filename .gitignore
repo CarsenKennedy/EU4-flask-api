@@ -1,0 +1,6 @@
+/__pycache__
+/env
+/migrations
+databaseuri.txt
+.bashrc
+config.py
