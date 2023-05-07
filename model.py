@@ -1,16 +1,16 @@
-from enum import unique
 from app import db
+from sqlalchemy import ARRAY
 
 class AchievementModel(db.Model):
     __tablename__ = 'achievements'
     
-    id = db.Column(db.Integer(), unique = True)
+    id = db.Column(db.String(), unique = True)
     name = db.Column(db.String(), primary_key=True, unique = True)
     description = db.Column(db.String())
     starting_condition = db.Column(db.String())
     requirements = db.Column(db.String())
     version = db.Column(db.Float())
-    dlc = db.Column(db.String(), nullable = True)
+    dlc = db.Column(ARRAY(db.String()), nullable = True)
     difficulty = db.Column(db.String())
     
     def __init__(self,id,name,description,starting_condition,requirements,version,dlc,difficulty):

@@ -4,6 +4,7 @@ import webscraper as webscraper
 from model import AchievementModel
 from app import db
 url = open("databaseuri.txt", "r").read().rstrip()
+db.drop_all()
 db.create_all()
 data = webscraper.scrape() 
 for count,index in enumerate(data,1):
@@ -15,6 +16,8 @@ for count,index in enumerate(data,1):
         requirements=data[index]['requirements'],
         version=float(data[index]['version']),
         difficulty=data[index]['difficulty'],
-        dlc=data[index]['dlc'])
+        dlc=data[index]['dlc']
+        )
+    print(data[index]['dlc'])
     db.session.add(a)   
 db.session.commit()
