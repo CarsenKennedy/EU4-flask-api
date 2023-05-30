@@ -71,6 +71,9 @@ def get_search(search):
         )).all()
     except ValueError:
         x = AchievementModel.query.filter(or_(
+            AchievementModel.name.ilike(search_str),
+            AchievementModel.requirements.ilike(search_str),
+            AchievementModel.starting_condition.ilike(search_str),
             cast(AchievementModel.id, db.String()).ilike(search_str),
             AchievementModel.description.ilike(search_str),
             AchievementModel.difficulty.ilike(search_str),
