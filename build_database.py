@@ -1,5 +1,4 @@
 import json
-import psycopg2
 import webscraper as webscraper
 from model import AchievementModel
 from app import db
